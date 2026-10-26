@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#173d32"><title>CropRatio · Image Cropper</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.css">
+<style>
+:root{--g:#173d32;--g2:#28634c;--mint:#eaf2ec;--ink:#18241d;--muted:#718078;--line:#dfe7e1;--bg:#f5f7f5;--white:#fff}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.5 Inter,system-ui,-apple-system,"Segoe UI",sans-serif}button,input,select{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #9db9ff;outline-offset:2px}[hidden]{display:none!important}.top{height:70px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 clamp(16px,4vw,55px)}.brand{display:flex;align-items:center;gap:11px}.logo{background:var(--g);color:white;border-radius:11px;width:40px;height:40px;display:grid;place-items:center;font-size:23px}.brand b{font-size:18px;display:block;line-height:1.1}.brand small{color:var(--muted);font-size:11px}.topright{display:flex;gap:12px;align-items:center}.privacy{color:#326647;background:#eff7f0;border:1px solid #dcebdd;border-radius:30px;padding:7px 11px;font-size:12px}.lang{padding:8px;border:1px solid var(--line);border-radius:8px;background:white}main{max-width:1280px;margin:auto;padding:36px 22px 50px}.intro{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:25px}.eyebrow{font-size:11px;font-weight:800;letter-spacing:1.5px;color:var(--g2)}h1{font-size:clamp(30px,4vw,42px);line-height:1.1;letter-spacing:-1.3px;margin:8px 0 10px}.intro p{margin:0;color:var(--muted);font-size:15px;max-width:680px}.meta{font-size:12px;color:var(--muted);text-align:right}.workspace{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:18px;align-items:start}.panel{background:white;border:1px solid var(--line);border-radius:16px;overflow:hidden;min-width:0;box-shadow:0 8px 28px #173d3208}.head{padding:17px 19px;border-bottom:1px solid #edf1ee;display:flex;align-items:center;justify-content:space-between;gap:10px}.head h2{font-size:15px;margin:0}.caption{font-size:12px;color:var(--muted);margin-top:3px}.body{padding:17px}.btn{border:1px solid transparent;border-radius:9px;padding:10px 14px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;gap:7px}.primary{background:var(--g);color:white}.primary:hover{background:var(--g2)}.secondary{background:#fff;border-color:var(--line);color:#35483c}.secondary:hover{background:#f5f9f6}.upload{min-height:390px;border:1.5px dashed #cbd8ce;border-radius:12px;background:#fbfdfb;display:flex;align-items:center;justify-content:center;text-align:center;padding:28px;cursor:pointer}.upload.drag{background:var(--mint);border-color:var(--g2)}.upload-icon{margin:0 auto 17px;width:58px;height:58px;background:#e8f0ea;border-radius:17px;display:grid;place-items:center;font-size:27px;color:var(--g)}.upload h3{font-size:19px;margin:0 0 7px}.upload p{color:var(--muted);margin:0 0 17px}.supported{font-size:11px;color:#89968e;margin-top:12px}.canvas-wrap{height:min(62vh,610px);min-height:300px;background:#eef1ee;border-radius:11px;overflow:hidden;display:flex;align-items:center;justify-content:center}.canvas-wrap img{display:block;max-width:100%}.tools{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;padding-top:13px}.toolgroup{display:flex;gap:6px}.iconbtn{width:36px;height:35px;border:1px solid var(--line);background:white;border-radius:8px;color:#405047;font-size:17px}.iconbtn:hover{background:var(--mint)}.cropinfo{font-size:12px;color:var(--muted)}.side-section{padding:17px 18px;border-bottom:1px solid #edf1ee}.side-section:last-child{border:0}.secthead{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}.secthead h3{font-size:13px;margin:0}.hint{font-size:11px;color:var(--muted)}.ratios{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}.ratio{min-height:70px;border:1px solid var(--line);border-radius:9px;background:white;color:#405047;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px}.ratio.active{background:#edf5ef;border-color:#4b8060;box-shadow:inset 0 0 0 1px #4b8060;color:var(--g)}.shape{display:block;border:1.7px solid currentColor;border-radius:3px;width:24px;height:21px}.ratio[data-r="1:1"] .shape{width:21px;height:21px}.ratio[data-r="4:5"] .shape{width:17px;height:23px}.ratio[data-r="3:2"] .shape{width:26px;height:17px}.ratio[data-r="16:9"] .shape{width:28px;height:16px}.ratio[data-r="9:16"] .shape{width:15px;height:26px}.ratio[data-r="4:3"] .shape{width:24px;height:18px}.ratio[data-r="free"] .shape{border-style:dashed}.rlabel{font-size:11px;font-weight:750}.custom{display:grid;grid-template-columns:1fr 12px 1fr auto;gap:6px;align-items:center;margin-top:10px}.custom span{text-align:center;color:var(--muted)}.custom input,.field input,.field select{min-width:0;width:100%;border:1px solid #dce5de;border-radius:8px;padding:9px 10px;background:white;color:var(--ink)}.field{margin-bottom:12px}.field:last-child{margin:0}.field label{display:flex;justify-content:space-between;gap:8px;margin-bottom:6px;color:#4d5b52;font-size:12px;font-weight:700}.two{display:grid;grid-template-columns:1fr 1fr;gap:9px}.unitwrap{position:relative}.unitwrap input{padding-right:33px}.unit{position:absolute;right:10px;top:9px;color:#89968e;font-size:11px}.toggle{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:9px 0 14px;font-size:12px;color:#4d5b52}.toggle input{accent-color:var(--g2)}.quality{display:flex;gap:9px;align-items:center}.quality input{padding:0;accent-color:var(--g2)}.quality output{min-width:34px;text-align:right;color:var(--muted);font-size:12px}.colorrow{display:flex;gap:8px;align-items:center}.colorrow input{width:38px;height:33px;padding:3px}.colorrow span{font-size:12px;color:var(--muted)}.download-area{padding:17px 18px;background:#fbfdfb}.download{width:100%;padding:13px}.footnote{text-align:center;color:var(--muted);font-size:11px;margin-top:9px}.status{border-radius:9px;padding:10px 13px;font-size:12px;margin-bottom:13px}.status.error{background:#fff0ef;color:#a1261d}.status.success{background:#edf7ef;color:#2e6941}.status.info{background:#eef4ff;color:#2e55a1}.benefits{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:17px}.benefit{display:flex;gap:10px;background:#fff;border:1px solid var(--line);border-radius:11px;padding:14px}.bicon{width:30px;height:30px;flex:0 0 auto;border-radius:9px;background:var(--mint);display:grid;place-items:center;color:var(--g)}.benefit b{font-size:12px;display:block;margin-bottom:3px}.benefit p{font-size:11px;color:var(--muted);margin:0}.footer{display:flex;justify-content:space-between;gap:14px;color:#849087;font-size:11px;padding-top:25px}.footer a{color:#60776a;text-decoration:none;margin-left:14px}.footer a:hover{text-decoration:underline}
+@media(max-width:960px){.workspace{grid-template-columns:minmax(0,1fr) 300px}.benefits{grid-template-columns:1fr}}@media(max-width:760px){.workspace{grid-template-columns:1fr}.intro{align-items:flex-start;flex-direction:column}.meta{text-align:left}.canvas-wrap{height:48vh;min-height:280px}.privacy{display:none}}@media(max-width:440px){main{padding:24px 11px 32px}.body{padding:10px}.head{padding:14px}.side-section{padding:15px 13px}.footer{flex-direction:column}.upload{min-height:320px}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="brand"><div class="logo">⌗</div><div><b>CropRatio</b><small data-t="brandSub">Online Image Cropper</small></div></div>
+  <div class="topright"><span class="privacy" data-t="privacyTag">✓ Diproses di perangkat Anda</span><select class="lang" id="lang" aria-label="Language"><option value="id">🇮🇩 Indonesia</option><option value="en">🇬🇧 English</option></select></div>
+</header>
+<main>
+  <div class="intro"><div><div class="eyebrow" data-t="eyebrow">ALAT GAMBAR GRATIS</div><h1 data-t="title">Potong gambar sesuai kebutuhan.</h1><p data-t="subtitle">Pilih rasio, atur area potong, tentukan ukuran output, lalu unduh gambar dalam hitungan detik.</p></div><div class="meta" id="meta" hidden></div></div>
+  <div class="status" id="status" role="status" aria-live="polite" hidden></div>
+  <div class="workspace">
+    <section class="panel">
+      <div class="head"><div><h2 data-t="workspace">Area kerja</h2><div class="caption" id="caption" data-t="workspaceHint">Unggah gambar untuk mulai memangkas.</div></div><button class="btn secondary" id="replace" hidden data-t="replace">Ganti gambar</button></div>
+      <div class="body">
+        <div class="upload" id="upload" tabindex="0" role="button">
+          <div><div class="upload-icon">▧</div><h3 data-t="uploadTitle">Seret gambar ke sini</h3><p data-t="uploadText">atau pilih file dari perangkat Anda untuk mulai mengedit.</p><button class="btn primary" id="choose" type="button" data-t="choose">Pilih gambar</button><div class="supported" data-t="supported">JPG, PNG, WebP · Maksimal 20 MB</div></div>
+        </div>
+        <input type="file" id="file" accept="image/jpeg,image/png,image/webp" hidden>
+        <div id="editor" hidden><div class="canvas-wrap"><img id="source" alt="Image to crop"></div><div class="tools"><div class="toolgroup"><button class="iconbtn" id="zoomOut" title="Zoom out" aria-label="Zoom out">−</button><button class="iconbtn" id="zoomIn" title="Zoom in" aria-label="Zoom in">＋</button><button class="iconbtn" id="rotateLeft" title="Rotate left" aria-label="Rotate left">↶</button><button class="iconbtn" id="rotateRight" title="Rotate right" aria-label="Rotate right">↷</button><button class="iconbtn" id="reset" title="Reset" aria-label="Reset">⟲</button></div><span class="cropinfo" id="cropInfo">Crop: —</span></div></div>
+      </div>
+    </section>
+    <aside class="panel">
+      <section class="side-section"><div class="secthead"><h3 data-t="ratioTitle">Rasio crop</h3><span class="hint" data-t="ratioHint">Pilih preset</span></div>
+        <div class="ratios" id="ratios">
+          <button class="ratio active" data-r="free" aria-pressed="true"><span class="shape"></span><span class="rlabel" data-t="free">Bebas</span></button>
+          <button class="ratio" data-r="1:1" aria-pressed="false"><span class="shape"></span><span class="rlabel">1:1</span></button>
+          <button class="ratio" data-r="4:5" aria-pressed="false"><span class="shape"></span><span class="rlabel">4:5</span></button>
+          <button class="ratio" data-r="3:2" aria-pressed="false"><span class="shape"></span><span class="rlabel">3:2</span></button>
+          <button class="ratio" data-r="4:3" aria-pressed="false"><span class="shape"></span><span class="rlabel">4:3</span></button>
+          <button class="ratio" data-r="16:9" aria-pressed="false"><span class="shape"></span><span class="rlabel">16:9</span></button>
+          <button class="ratio" data-r="9:16" aria-pressed="false"><span class="shape"></span><span class="rlabel">9:16</span></button>
+          <button class="ratio" data-r="3:4" aria-pressed="false"><span class="shape"></span><span class="rlabel">3:4</span></button>
+          <button class="ratio" data-r="2:3" aria-pressed="false"><span class="shape"></span><span class="rlabel">2:3</span></button>
+        </div>
+        <div class="custom"><input id="rw" type="number" min="1" max="10000" placeholder="W" aria-label="Custom ratio width"><span>:</span><input id="rh" type="number" min="1" max="10000" placeholder="H" aria-label="Custom ratio height"><button class="btn secondary" id="customBtn" data-t="apply">Terapkan</button></div>
+      </section>
+      <section class="side-section"><div class="secthead"><h3 data-t="outputTitle">Ukuran output</h3><span class="hint">px</span></div>
+        <div class="two"><div class="field"><label for="ow" data-t="width">Lebar</label><div class="unitwrap"><input id="ow" type="number" min="1" max="12000" value="1080"><span class="unit">px</span></div></div><div class="field"><label for="oh" data-t="height">Tinggi</label><div class="unitwrap"><input id="oh" type="number" min="1" max="12000" value="1080"><span class="unit">px</span></div></div></div>
+        <div class="toggle"><span data-t="lockRatio">Kunci rasio output</span><input type="checkbox" id="lock" checked></div>
+        <div class="field"><label for="format" data-t="format">Format file</label><select id="format"><option value="image/jpeg">JPEG</option><option value="image/png">PNG</option><option value="image/webp">WebP</option></select></div>
+        <div class="field" id="qualityField"><label for="quality"><span data-t="quality">Kualitas</span><span id="qval">90%</span></label><div class="quality"><input id="quality" type="range" min="10" max="100" value="90"><output id="qout">90%</output></div></div>
+        <div class="field" id="bgField"><label data-t="background">Latar JPEG</label><div class="colorrow"><input id="bg" type="color" value="#ffffff"><span id="hex">#FFFFFF</span></div></div>
+      </section>
+      <div class="download-area"><button class="btn primary download" id="download" disabled><span>↓</span><span data-t="download">Unduh gambar</span></button><div class="footnote" data-t="downloadFoot">Gratis · Tanpa watermark · Diproses lokal</div></div>
+    </aside>
+  </div>
+  <div class="benefits">
+    <div class="benefit"><span class="bicon">✓</span><div><b data-t="b1">Privasi terjaga</b><p data-t="b1p">Gambar diproses di browser, tidak diunggah ke server.</p></div></div>
+    <div class="benefit"><span class="bicon">◇</span><div><b data-t="b2">Rasio fleksibel</b><p data-t="b2p">Gunakan preset atau atur area crop secara bebas.</p></div></div>
+    <div class="benefit"><span class="bicon">↓</span><div><b data-t="b3">Ekspor praktis</b><p data-t="b3p">Pilih dimensi pixel dan format file yang dibutuhkan.</p></div></div>
+  </div>
+  <footer class="footer"><span>© <span id="year"></span> CropRatio</span><span><a href="#" id="privacy" data-t="privacyLink">Privasi</a><a href="#" id="about" data-t="aboutLink">Tentang</a></span></footer>
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.js"></script>
+<script>
+(() => {
+const $ = s => document.querySelector(s);
+const el = {
+ lang:$('#lang'), upload:$('#upload'), file:$('#file'), choose:$('#choose'), editor:$('#editor'), img:$('#source'),
+ replace:$('#replace'), status:$('#status'), meta:$('#meta'), caption:$('#caption'), cropInfo:$('#cropInfo'),
+ ratios:$('#ratios'), rw:$('#rw'), rh:$('#rh'), customBtn:$('#customBtn'), ow:$('#ow'), oh:$('#oh'),
+ lock:$('#lock'), format:$('#format'), quality:$('#quality'), qval:$('#qval'), qout:$('#qout'),
+ qualityField:$('#qualityField'), bgField:$('#bgField'), bg:$('#bg'), hex:$('#hex'), download:$('#download')
+};
+const text = {
+ id:{brandSub:'Online Image Cropper',privacyTag:'✓ Diproses di perangkat Anda',eyebrow:'ALAT GAMBAR GRATIS',title:'Potong gambar sesuai kebutuhan.',subtitle:'Pilih rasio, atur area potong, tentukan ukuran output, lalu unduh gambar dalam hitungan detik.',workspace:'Area kerja',workspaceHint:'Unggah gambar untuk mulai memangkas.',replace:'Ganti gambar',uploadTitle:'Seret gambar ke sini',uploadText:'atau pilih file dari perangkat Anda untuk mulai mengedit.',choose:'Pilih gambar',supported:'JPG, PNG, WebP · Maksimal 20 MB',ratioTitle:'Rasio crop',ratioHint:'Pilih preset',free:'Bebas',apply:'Terapkan',outputTitle:'Ukuran output',width:'Lebar',height:'Tinggi',lockRatio:'Kunci rasio output',format:'Format file',quality:'Kualitas',background:'Latar JPEG',download:'Unduh gambar',downloadFoot:'Gratis · Tanpa watermark · Diproses lokal',b1:'Privasi terjaga',b1p:'Gambar diproses di browser, tidak diunggah ke server.',b2:'Rasio fleksibel',b2p:'Gunakan preset atau atur area crop secara bebas.',b3:'Ekspor praktis',b3p:'Pilih dimensi pixel dan format file yang dibutuhkan.',privacyLink:'Privasi',aboutLink:'Tentang',crop:'Area crop',noImage:'Crop belum tersedia.',loaded:'Gambar siap diedit.',invalidType:'Format tidak didukung. Gunakan JPG, PNG, atau WebP.',tooLarge:'Ukuran file melebihi batas 20 MB.',decode:'Gambar tidak dapat dibuka. Coba file lain.',first:'Unggah gambar terlebih dahulu.',invalidRatio:'Masukkan rasio kustom berupa angka positif.',invalidDims:'Lebar dan tinggi harus bilangan bulat antara 1 dan 12000 px.',exportError:'Ekspor gagal. Coba ukuran lebih kecil atau format lain.',exportSuccess:'Gambar berhasil diproses. Unduhan telah dimulai.',maxPixels:'Ukuran output terlalu besar. Kurangi dimensi output.',processing:'Memproses...',privacyMsg:'CropRatio memproses gambar di browser. Gambar tidak dikirim ke server aplikasi.',aboutMsg:'CropRatio adalah alat crop gambar untuk memilih rasio, mengatur dimensi, dan mengunduh hasil.'},
+ en:{brandSub:'Online Image Cropper',privacyTag:'✓ Processed on your device',eyebrow:'FREE IMAGE TOOL',title:'Crop images your way.',subtitle:'Choose a ratio, adjust the crop area, set output dimensions, and download in seconds.',workspace:'Workspace',workspaceHint:'Upload an image to start cropping.',replace:'Replace image',uploadTitle:'Drop your image here',uploadText:'or choose a file from your device to start editing.',choose:'Choose image',supported:'JPG, PNG, WebP · Up to 20 MB',ratioTitle:'Crop ratio',ratioHint:'Choose a preset',free:'Free',apply:'Apply',outputTitle:'Output size',width:'Width',height:'Height',lockRatio:'Lock output ratio',format:'File format',quality:'Quality',background:'JPEG background',download:'Download image',downloadFoot:'Free · No watermark · Local processing',b1:'Privacy first',b1p:'Images are processed in your browser, not uploaded to a server.',b2:'Flexible ratios',b2p:'Use a preset or freely adjust the crop area.',b3:'Easy export',b3p:'Choose the pixel dimensions and file format you need.',privacyLink:'Privacy',aboutLink:'About',crop:'Crop area',noImage:'Crop is not available.',loaded:'Image is ready to edit.',invalidType:'Unsupported format. Use JPG, PNG, or WebP.',tooLarge:'File size exceeds the 20 MB limit.',decode:'Image could not be opened. Try another file.',first:'Upload an image first.',invalidRatio:'Enter a custom ratio using positive numbers.',invalidDims:'Width and height must be whole numbers between 1 and 12000 px.',exportError:'Export failed. Try a smaller size or another format.',exportSuccess:'Image processed successfully. Download has started.',maxPixels:'Output is too large. Reduce the output dimensions.',processing:'Processing...',privacyMsg:'CropRatio processes images in your browser. Images are not sent to the app server.',aboutMsg:'CropRatio is an image cropper for choosing ratios, setting dimensions, and downloading results.'}
+};
+let lang='id', cropper=null, objectUrl=null, currentFile=null, ratio='free', busy=false;
+const t=k=>text[lang][k]||text.id[k]||k;
+function status(msg,type='info'){el.status.textContent=msg;el.status.className='status '+type;el.status.hidden=!msg}
+function translate(){document.documentElement.lang=lang;document.title=lang==='id'?'CropRatio · Pemangkas Gambar':'CropRatio · Image Cropper';document.querySelectorAll('[data-t]').forEach(n=>{const v=t(n.dataset.t);if(v)n.textContent=v});if(currentFile)el.caption.textContent=currentFile.name;updateCropInfo()}
+function activeRatio(r){document.querySelectorAll('.ratio').forEach(b=>{const on=b.dataset.r===r;b.classList.toggle('active',on);b.setAttribute('aria-pressed',String(on))})}
+function getRatio(){if(ratio&&ratio!=='free'){const p=ratio.split(':').map(Number);if(p[0]>0&&p[1]>0)return p[0]/p[1]}if(cropper){const d=cropper.getData(true);if(d.height>0)return d.width/d.height}return null}
+function updateDims(changed='width'){if(!el.lock.checked)return;const r=getRatio();if(!r)return;const w=Number(el.ow.value),h=Number(el.oh.value);if(changed==='width'&&w>0)el.oh.value=Math.max(1,Math.round(w/r));else if(changed==='height'&&h>0)el.ow.value=Math.max(1,Math.round(h*r))}
+function updateCropInfo(){if(!cropper){el.cropInfo.textContent=t('noImage');return}const d=cropper.getData(true);el.cropInfo.textContent=`${t('crop')}: ${Math.round(d.width)} × ${Math.round(d.height)} px`}
+function setRatio(r,customValue){ratio=r;if(cropper){if(r==='free')cropper.setAspectRatio(NaN);else cropper.setAspectRatio(customValue||(()=>{const p=r.split(':').map(Number);return p[0]/p[1]})())}activeRatio(r);updateDims('width');updateCropInfo()}
+function destroy(){if(cropper){cropper.destroy();cropper=null}el.download.disabled=true}
+function clearImage(){destroy();if(objectUrl){URL.revokeObjectURL(objectUrl);objectUrl=null}currentFile=null;el.img.removeAttribute('src');el.upload.hidden=false;el.editor.hidden=true;el.replace.hidden=true;el.meta.hidden=true;el.caption.textContent=t('workspaceHint');el.file.value='';el.cropInfo.textContent=t('noImage')}
+function loadFile(file){
+ if(!file)return;
+ status('');
+ if(!['image/jpeg','image/png','image/webp'].includes(file.type)){status(t('invalidType'),'error');return}
+ if(file.size>20*1024*1024){status(t('tooLarge'),'error');return}
+ destroy();if(objectUrl)URL.revokeObjectURL(objectUrl);currentFile=file;objectUrl=URL.createObjectURL(file);
+ el.img.onload=()=>{
+  el.upload.hidden=true;el.editor.hidden=false;el.replace.hidden=false;el.meta.hidden=false;
+  el.meta.textContent=`${file.name} · ${Math.round(file.size/1024)} KB · ${el.img.naturalWidth} × ${el.img.naturalHeight} px`;el.caption.textContent=file.name;
+  try{cropper=new Cropper(el.img,{viewMode:1,dragMode:'crop',aspectRatio:NaN,autoCropArea:.85,responsive:true,restore:false,guides:true,center:true,background:false,movable:true,zoomable:true,zoomOnWheel:true,cropBoxMovable:true,cropBoxResizable:true,toggleDragModeOnDblclick:false,ready(){if(ratio!=='free'){const p=ratio.split(':').map(Number);cropper.setAspectRatio(p[0]/p[1])}else cropper.setAspectRatio(NaN);el.download.disabled=false;updateCropInfo();updateDims('width')},crop(){updateCropInfo()}});status(t('loaded'),'success')}catch(e){console.error(e);status(t('decode'),'error')}
+ };
+ el.img.onerror=()=>{status(t('decode'),'error');clearImage()};el.img.src=objectUrl;
+}
+async function exportImage(){
+ if(!cropper){status(t('first'),'error');return}
+ const w=Number(el.ow.value),h=Number(el.oh.value);
+ if(!Number.isInteger(w)||!Number.isInteger(h)||w<1||h<1||w>12000||h>12000){status(t('invalidDims'),'error');return}
+ if(w*h>40000000){status(t('maxPixels'),'error');return}
+ const old=el.download.innerHTML;el.download.disabled=true;el.download.textContent=t('processing');status('');
+ try{
+  const format=el.format.value,bg=el.bg.value,q=Number(el.quality.value)/100;
+  const source=cropper.getCroppedCanvas({imageSmoothingEnabled:true,imageSmoothingQuality:'high',fillColor:format==='image/jpeg'?bg:'transparent'});
+  if(!source)throw Error('No crop canvas');
+  const canvas=document.createElement('canvas');canvas.width=w;canvas.height=h;
+  const ctx=canvas.getContext('2d');if(!ctx)throw Error('Canvas unavailable');
+  if(format==='image/jpeg'){ctx.fillStyle=bg;ctx.fillRect(0,0,w,h)}
+  ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';ctx.drawImage(source,0,0,source.width,source.height,0,0,w,h);
+  const blob=await new Promise((resolve,reject)=>canvas.toBlob(b=>b?resolve(b):reject(Error('Blob failed')),format,format==='image/png'?undefined:q));
+  if(!blob||blob.type!==format)throw Error('Format unsupported');
+  const ext=format==='image/jpeg'?'jpg':format==='image/png'?'png':'webp';
+  const base=(currentFile?currentFile.name.replace(/\.[^.]+$/,''):'cropratio').normalize('NFKD').replace(/[^\w-]+/g,'-').replace(/-+/g,'-').replace(/^-|-$/g,'')||'cropratio';
+  const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=`${base}-${w}x${h}.${ext}`;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1500);status(t('exportSuccess'),'success');
+ }catch(e){console.error(e);status(t('exportError'),'error')}finally{el.download.disabled=!cropper;el.download.innerHTML=old;translate()}
+}
+el.lang.addEventListener('change',()=>{lang=el.lang.value;translate()});
+el.choose.addEventListener('click',e=>{e.stopPropagation();el.file.click()});
+el.upload.addEventListener('click',e=>{if(!e.target.closest('button'))el.file.click()});
+el.upload.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();el.file.click()}});
+el.file.addEventListener('change',e=>loadFile(e.target.files?.[0]));el.replace.addEventListener('click',()=>el.file.click());
+['dragenter','dragover'].forEach(n=>el.upload.addEventListener(n,e=>{e.preventDefault();el.upload.classList.add('drag')}));
+['dragleave','drop'].forEach(n=>el.upload.addEventListener(n,e=>{e.preventDefault();el.upload.classList.remove('drag')}));
+el.upload.addEventListener('drop',e=>{const f=e.dataTransfer?.files?.[0];if(f)loadFile(f)});
+el.ratios.addEventListener('click',e=>{const b=e.target.closest('[data-r]');if(b)setRatio(b.dataset.r)});
+el.customBtn.addEventListener('click',()=>{const w=Number(el.rw.value),h=Number(el.rh.value);if(!Number.isFinite(w)||!Number.isFinite(h)||w<=0||h<=0||w>10000||h>10000){status(t('invalidRatio'),'error');return}ratio=`${w}:${h}`;if(cropper)cropper.setAspectRatio(w/h);activeRatio('__custom__');document.querySelectorAll('.ratio').forEach(b=>{b.classList.remove('active');b.setAttribute('aria-pressed','false')});updateDims('width');status(`${t('apply')}: ${ratio}`,'info');updateCropInfo()});
+el.ow.addEventListener('input',()=>updateDims('width'));el.oh.addEventListener('input',()=>updateDims('height'));el.lock.addEventListener('change',()=>{if(el.lock.checked)updateDims('width')});
+el.format.addEventListener('change',()=>{el.qualityField.hidden=el.format.value==='image/png';el.bgField.hidden=el.format.value!=='image/jpeg'});
+el.quality.addEventListener('input',()=>{el.qval.textContent=el.quality.value+'%';el.qout.textContent=el.quality.value+'%'});
+el.bg.addEventListener('input',()=>el.hex.textContent=el.bg.value.toUpperCase());
+$('#zoomIn').addEventListener('click',()=>cropper?.zoom(.1));$('#zoomOut').addEventListener('click',()=>cropper?.zoom(-.1));$('#rotateLeft').addEventListener('click',()=>cropper?.rotate(-90));$('#rotateRight').addEventListener('click',()=>cropper?.rotate(90));
+$('#reset').addEventListener('click',()=>{if(!cropper)return;cropper.reset();if(ratio!=='free'){const p=ratio.split(':').map(Number);cropper.setAspectRatio(p[0]/p[1])}else cropper.setAspectRatio(NaN);updateCropInfo()});
+el.download.addEventListener('click',exportImage);
+$('#privacy').addEventListener('click',e=>{e.preventDefault();alert(t('privacyMsg'))});$('#about').addEventListener('click',e=>{e.preventDefault();alert(t('aboutMsg'))});
+$('#year').textContent=new Date().getFullYear();translate();activeRatio('free');
+})();
+</script>
+</body>
+</html>
